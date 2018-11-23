@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd" xmlns:tx="http://www.springframework.org/schema/tx">
+
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="url" value="jdbc:mysql://localhost:3306/onlineshop"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="123456"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/onlineshop/vo/TbProduct.hbm.xml</value>
+				<value>com/onlineshop/vo/TbUser.hbm.xml</value>
+				<value>com/onlineshop/vo/TbOrder.hbm.xml</value>
+				<value>com/onlineshop/vo/TbCart.hbm.xml</value></list>
+		</property></bean>
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="baseDAO" class="com.onlineshop.dao.BaseDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="userDAO" class="com.onlineshop.dao.impl.UserDAO" parent="baseDAO"/>
+	<bean id="userService" class="com.onlineshop.service.impl.UserService">
+		<property name="userDAO" ref="userDAO"/>
+	</bean>
+	<bean id="userAction" class="com.onlineshop.action.UserLoginAction">
+		<property name="userService" ref="userService"/>
+	</bean>
+	
+	<bean id="userProdDAO" class="com.onlineshop.dao.impl.UserProdDAO" parent="baseDAO"/>
+	<bean id="userProdService" class="com.onlineshop.service.impl.UserProdService">
+		<property name="userProdDAO" ref="userProdDAO"/>
+	</bean>
+	<bean id="userProdAction" class="com.onlineshop.action.UserProdAction">
+		<property name="userProdService" ref="userProdService"/>
+	</bean>
+	
+	<bean id="cartDAO" class="com.onlineshop.dao.impl.CartDAO" parent="baseDAO"/>
+	<bean id="cartService" class="com.onlineshop.service.impl.CartService">
+		<property name="cartDAO" ref="cartDAO"/>
+	</bean>
+	<bean id="cartAction" class="com.onlineshop.action.CartAction">
+		<property name="cartService" ref="cartService"/>
+	</bean>
+	
+	<bean id="orderDAO" class="com.onlineshop.dao.impl.OrderDAO" parent="baseDAO"/>
+	<bean id="orderService" class="com.onlineshop.service.impl.OrderService">
+		<property name="orderDAO" ref="orderDAO"/>
+	</bean>
+	<bean id="orderAction" class="com.onlineshop.action.OrderAction">
+		<property name="orderService" ref="orderService"/>
+	</bean>
+	
+	<bean id="checkCode" class="com.onlineshop.action.CheckAction"></bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager" /></beans>

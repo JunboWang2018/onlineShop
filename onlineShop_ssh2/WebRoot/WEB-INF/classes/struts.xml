@@ -1,0 +1,48 @@
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <package name="default" extends="struts-default">
+        <action name="login" class="userAction" method="executeLogin">
+        	<result name="error">/user/login_error.jsp</result>
+            <result name="success">/user/login_success.jsp</result>
+        </action>
+        <action name="register" class="userAction" method="executeRegister">
+			<result name="success">/user/register_success.jsp</result>
+			<result name="error">/user/register_faild.jsp</result>
+		</action>
+		<action name="logout" class="userAction" method="logout">
+			<result name="success">/user/logout_success.jsp</result>
+		</action>
+		<action name="searchAction" class="userProdAction" method="searchProdByKey">
+			<result name="success">/product/product_list.jsp</result>
+		</action>
+		<action name="addCartAction" class="cartAction" method="addProdToCart">
+			<result name="success">/user/addCart_success.jsp</result>
+			<result name="error">/user/addCart_error.jsp</result>
+		</action>
+		<action name="searchCartProd" class="cartAction" method="searchCartProd">
+			<result name="success">/user/cart.jsp</result>
+		</action>
+		<action name="addOrderAction" class="orderAction" method="addOrder">
+			<result name="success">/user/addOrder_success.jsp</result>
+			<result name="error">/user/addOrder_error.jsp</result>
+		</action>
+		<action name="searchOrderProd" class="orderAction" method="searchOrderProd">
+			<result name="success">/user/order_list.jsp</result>
+		</action>
+		<action name="searchProdByDefaultKey_mobile" class="userProdAction" method="searchProdByDefaultKey_mobile">
+			<result name="success">/product/product_list.jsp</result>
+		</action>
+		<action name="searchProdByDefaultKey_computer" class="userProdAction" method="searchProdByDefaultKey_computer">
+			<result name="success">/product/product_list.jsp</result>
+		</action>
+		<action name="searchProdByDefaultKey_appliance" class="userProdAction" method="searchProdByDefaultKey_appliance">
+			<result name="success">/product/product_list.jsp</result>
+		</action>
+		<action name="searchProdByDefaultKey_clothes" class="userProdAction" method="searchProdByDefaultKey_clothes">
+			<result name="success">/product/product_list.jsp</result>
+		</action>
+		<action name="checkCode" class="checkCode" method="draw"></action>
+    </package>
+</struts>
