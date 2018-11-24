@@ -43,7 +43,7 @@
 	<bean id="userService" class="com.onlineshop.service.impl.UserService">
 		<property name="userDAO" ref="userDAO"/>
 	</bean>
-	<bean id="userAction" class="com.onlineshop.action.UserLoginAction">
+	<bean id="userAction" class="com.onlineshop.action.UserLoginAction" scope="prototype">
 		<property name="userService" ref="userService"/>
 	</bean>
 	
@@ -51,7 +51,7 @@
 	<bean id="userProdService" class="com.onlineshop.service.impl.UserProdService">
 		<property name="userProdDAO" ref="userProdDAO"/>
 	</bean>
-	<bean id="userProdAction" class="com.onlineshop.action.UserProdAction">
+	<bean id="userProdAction" class="com.onlineshop.action.UserProdAction" scope="prototype">
 		<property name="userProdService" ref="userProdService"/>
 	</bean>
 	
@@ -59,7 +59,7 @@
 	<bean id="cartService" class="com.onlineshop.service.impl.CartService">
 		<property name="cartDAO" ref="cartDAO"/>
 	</bean>
-	<bean id="cartAction" class="com.onlineshop.action.CartAction">
+	<bean id="cartAction" class="com.onlineshop.action.CartAction" scope="prototype">
 		<property name="cartService" ref="cartService"/>
 	</bean>
 	
@@ -67,10 +67,10 @@
 	<bean id="orderService" class="com.onlineshop.service.impl.OrderService">
 		<property name="orderDAO" ref="orderDAO"/>
 	</bean>
-	<bean id="orderAction" class="com.onlineshop.action.OrderAction">
+	<bean id="orderAction" class="com.onlineshop.action.OrderAction" scope="prototype">
 		<property name="orderService" ref="orderService"/>
 	</bean>
 	
-	<bean id="checkCode" class="com.onlineshop.action.CheckAction"></bean>
+	<bean id="checkCode" class="com.onlineshop.action.CheckAction" scope="prototype"></bean>
 	
 	<tx:annotation-driven transaction-manager="transactionManager" /></beans>
