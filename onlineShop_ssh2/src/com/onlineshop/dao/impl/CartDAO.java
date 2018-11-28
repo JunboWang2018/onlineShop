@@ -45,6 +45,7 @@ public class CartDAO extends BaseDAO implements ICartDAO {
 			queryCart.setParameter(0, Integer.valueOf(userId));
 			List<TbCart> cartList = queryCart.list();
 			System.out.println("list from order and product, order=" + cartList + ",product=" + productList);
+			//if product is exist in cart, add number
 			for (TbCart cart : cartList) {
 				if (cart.getCartProdId().toString().equals(prodId)) {
 				    int originNum = cart.getCartProdNum().intValue();
@@ -59,6 +60,7 @@ public class CartDAO extends BaseDAO implements ICartDAO {
 				    return "error";
 				}
 			}
+			//if product is not exist in cart, create.
 			TbCart cart = new TbCart();
 			cart.setCartProdId(Integer.valueOf(prodId));
 			cart.setCartProdPic(product.getProductPic().split(",")[0]);
