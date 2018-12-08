@@ -1,5 +1,6 @@
 package com.onlineshop.service.impl;
 
+import com.onlineshop.utils.Const;
 import com.onlineshop.utils.UserPwdMD5;
 import com.onlineshop.service.IUserService;
 import com.onlineshop.dao.IUserDAO;
@@ -26,6 +27,28 @@ public class UserService implements IUserService{
 		tbUser.setUserPassword(UserPwdMD5.GetMD5Code(tbUser.getUserPassword()));
 		return userDAO.registerTbUser(tbUser);
 	}
+	
+	@Override
+	public TbUser userInfoManage(TbUser tbUser) {
+		return userDAO.userInfoManage(tbUser);
+	}
+	
+	@Override
+	public String userPasswordModify(String originPWD, String newPWD) {
+		if(newPWD == null || newPWD.equals("")) {
+			System.out.println("newPWD is null");
+			return Const.ERROR;
+		}
+		//º”√‹
+		newPWD = UserPwdMD5.GetMD5Code(newPWD);
+		if(originPWD.equals(newPWD)) {
+			System.out.println("originPWD == newPWD");
+			return Const.ERROR;
+		}
+		else {
+			return userDAO.userPasswordModify(newPWD);
+		}
+	}	
 
 	public IUserDAO getUserDAO() {
 		return userDAO;
@@ -35,7 +58,6 @@ public class UserService implements IUserService{
 		this.userDAO = userDAO;
 	}
 
-	
-	
+
 
 }

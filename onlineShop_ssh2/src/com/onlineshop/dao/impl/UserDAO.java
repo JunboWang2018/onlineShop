@@ -49,4 +49,16 @@ public class UserDAO extends BaseDAO implements IUserDAO {
 		}	
 	}
 
+	@Override
+	public TbUser userInfoManage(TbUser tbUser) {
+		
+		return null;
+	}
+
+	@Override
+	public String userPasswordModify(String newPWD) {
+		
+		return null;
+	}
+
 }

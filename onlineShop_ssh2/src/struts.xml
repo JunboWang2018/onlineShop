@@ -14,6 +14,12 @@
 		<action name="logout" class="userAction" method="logout">
 			<result name="success">/user/logout_success.jsp</result>
 		</action>
+		<action name="infoManage" class="userAction" method="userInfoManage">
+
+		</action>
+		<action name="pwdModify" class="userAction" method="userPasswordModify">
+
+		</action>
 		<action name="searchAction" class="userProdAction" method="searchProdByKey">
 			<result name="success">/product/product_list.jsp</result>
 		</action>

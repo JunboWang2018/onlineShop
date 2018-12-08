@@ -16,5 +16,9 @@ public interface IUserService {
 	 * @return
 	 */
 	public TbUser registerTbUser(TbUser tbUser);  //×¢²áservice
+	
+	public TbUser userInfoManage(TbUser tbUser);
+	
+	public String userPasswordModify(String originPWD, String newPWD);
 
 }

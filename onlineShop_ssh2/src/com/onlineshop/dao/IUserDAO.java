@@ -17,5 +17,7 @@ public interface IUserDAO {
 	 */
 	public TbUser registerTbUser(TbUser tbUser);  //×¢²áservice
 
+	public TbUser userInfoManage(TbUser tbUser);
 	
+	public String userPasswordModify(String newPWD);
 }
