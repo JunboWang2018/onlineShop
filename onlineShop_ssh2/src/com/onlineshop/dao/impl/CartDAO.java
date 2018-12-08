@@ -2,6 +2,7 @@ package com.onlineshop.dao.impl;
 
 import com.onlineshop.dao.BaseDAO;
 import com.onlineshop.dao.ICartDAO;
+import com.onlineshop.utils.Const;
 import com.onlineshop.vo.TbCart;
 import com.onlineshop.vo.TbProduct;
 import java.io.PrintStream;
@@ -35,7 +36,7 @@ public class CartDAO extends BaseDAO implements ICartDAO {
 			List productList = queryProd.list();
 			TbProduct product = null;
 			if (productList == null) {
-				return "error";
+				return Const.ERROR;
 			}
 			product = (TbProduct)productList.get(0);
 			
@@ -55,9 +56,9 @@ public class CartDAO extends BaseDAO implements ICartDAO {
 				    Integer result = (Integer)session.save(cart);
 				    tx.commit();
 				    if (result.intValue() > 0) {
-				      return "success";
+				      return Const.SUCCESS;
 				    }
-				    return "error";
+				    return Const.ERROR;
 				}
 			}
 			//if product is not exist in cart, create.
@@ -68,11 +69,44 @@ public class CartDAO extends BaseDAO implements ICartDAO {
 			cart.setCartProdPrice(product.getProductRightPrice());
 			cart.setCartProdNum(Integer.valueOf(prodNum));
 			cart.setUserId(Integer.valueOf(userId));
-			Integer result = (Integer)session.save(cart);
+			Integer result = (Integer) session.save(cart);
 			tx.commit();
 			if (result.intValue() > 0) {
-			  return "success";
+			  return Const.SUCCESS;
 			}
-			return "error";
+			return Const.ERROR;
 	  }
+
+	@Override
+	public String deleteProd(String searchKey) {
+		Session session = getSession();
+		Transaction tc = session.beginTransaction();
+		String deleteSql = "delete from TbCart c where c.cartProdId=?";
+		Query query = session.createQuery(deleteSql);
+		query.setParameter(0, Integer.valueOf(searchKey));
+		Integer result = (Integer)query.executeUpdate();
+		tc.commit();
+		if(result.intValue() > 0) {
+			return Const.SUCCESS;
+		}
+		else {
+			return Const.ERROR;
+		}
+	}
+
+	@Override
+	public String deleteProdAll() {
+		Session session = getSession();
+		Transaction tc = session.beginTransaction();
+		String deleteSql = "delete from TbCart";
+		Query query = session.createQuery(deleteSql);
+		int result = query.executeUpdate();
+		tc.commit();
+		if(result > 0) {
+			return Const.SUCCESS;
+		}
+		else {
+			return Const.ERROR;
+		}
+	}
 }

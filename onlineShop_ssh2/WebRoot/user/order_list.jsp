@@ -89,9 +89,7 @@ body {
 		</div>
 		<div style="margin-right:130px;">
 			<div style="text-align:right;">
-				<em style="color:#ff6600;">
-			登录后确认是否享有优惠&nbsp;&nbsp;
-		</em> 赠送积分: <em style="color:#ff6600;">596</em>&nbsp; 商品金额: <strong style="color:#ff6600;">￥<%=sumPrice %>元</strong>
+		</em> 赠送积分: <em style="color:#ff6600;"><%=user.getUserScore() %></em>&nbsp; 商品金额: <strong style="color:#ff6600;">￥<%=sumPrice %>元</strong>
 			</div>
 			<div style="text-align:right;margin-top:10px;margin-bottom:10px;">
 				<a href="order_info.htm">

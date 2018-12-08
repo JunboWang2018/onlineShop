@@ -25,6 +25,21 @@ public class CartService implements ICartService{
 	public String addProdToCart(String userId, String prodId, String prodNum) {
 		return cartDAO.addProdToCart(userId, prodId, prodNum);
 	}
+	
+	/**
+	 * delete product
+	 */
+	@Override
+	public String deleteProd(String deleteKey) {
+		String result = "";
+		if(deleteKey.equals("ALL")) {
+			result = cartDAO.deleteProdAll();
+		}
+		else {
+			result = cartDAO.deleteProd(deleteKey);
+		}
+		return result;
+	}
 
 	public ICartDAO getCartDAO() {
 		return cartDAO;
@@ -33,10 +48,6 @@ public class CartService implements ICartService{
 	public void setCartDAO(ICartDAO cartDAO) {
 		this.cartDAO = cartDAO;
 	}
-
-	
-
-	
 	
 	
 }

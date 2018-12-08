@@ -57,7 +57,7 @@ public class UserProdDAO extends BaseDAO implements IUserProdDAO{
 		}
 		List<TbProduct> productList = query.list();
 		session.close();
-		if(productList.size() != 0) {
+		if(!productList.isEmpty()) {
 			return productList;
 		}
 		else {

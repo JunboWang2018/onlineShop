@@ -9,6 +9,8 @@ create table tb_user(
 	user_name char(50),
 	user_password char(50) NOT NULL,
 	user_tel char(11) NOT NULL,
+    user_address varchar(1000),
+    user_score int(8),
 	PRIMARY KEY (user_id)
 )ENGINE=InnoDB DEFAULT CHARSET=gbk;
 

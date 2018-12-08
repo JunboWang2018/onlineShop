@@ -90,7 +90,7 @@
 												<span class="subtotal">￥<%=itemSumPrice %></span>
 											</td>
 											<td>
-												<a href="javascript:;" class="delete">删除</a>
+												<a href="deleteCartProd.action?deleteKey=<%=cart.getCartProdId() %>" class="delete">删除</a>
 											</td>
 										</tr>
 									<%} %>
@@ -103,11 +103,10 @@
 			<div style="margin-right:130px;">
 				<div style="text-align:right;">
 					<em style="color:#ff6600;">
-				登录后确认是否享有优惠&nbsp;&nbsp;
-			</em> 赠送积分: <em style="color:#ff6600;">596</em>&nbsp; 商品金额: <strong style="color:#ff6600;">￥<%=sumPrice %>元</strong>
+			</em> 赠送积分: <em style="color:#ff6600;"><%=user.getUserScore() %></em>&nbsp; 商品金额: <strong style="color:#ff6600;">￥<%=sumPrice %>元</strong>
 				</div>
 				<div style="text-align:right;margin-top:10px;margin-bottom:10px;">
-					<a href="order_info.htm" id="clear" class="clear">清空购物车</a>
+					<a href="deleteCartProd.action?deleteKey=ALL" id="clear" class="clear">清空购物车</a>
 					<a href="addOrderAction.action">
 						<input type="submit" width="100" value="提交订单" name="submit" border="0" style="background: url('../image/basic/register.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 						height:35px;width:100px;color:white;">

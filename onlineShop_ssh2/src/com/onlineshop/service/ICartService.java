@@ -20,4 +20,11 @@ public interface ICartService {
 	 * @return
 	 */
 	public String addProdToCart(String userId, String prodId, String prodNum);
+	
+	/**
+	 * delete prodcut
+	 * @param deleteKey
+	 * @return
+	 */
+	public String deleteProd(String deleteKey);
 }

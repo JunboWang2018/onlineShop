@@ -17,6 +17,8 @@ public class TbUser implements java.io.Serializable {
 	private String userRealname;
 	private String userSex;
 	private Date userDate;
+	private String userAddress;
+	private Integer userScore;
 
 	// Constructors
 
@@ -32,13 +34,15 @@ public class TbUser implements java.io.Serializable {
 
 	/** full constructor */
 	public TbUser(String userName, String userPassword, String userMail, String userRealname, String userSex,
-			Date userDate) {
+			Date userDate, String userAddress, Integer userScore) {
 		this.userName = userName;
 		this.userPassword = userPassword;
 		this.userMail = userMail;
 		this.userRealname = userRealname;
 		this.userSex = userSex;
 		this.userDate = userDate;
+		this.userAddress = userAddress;
+		this.userScore = userScore;
 	}
 
 	// Property accessors
@@ -99,4 +103,21 @@ public class TbUser implements java.io.Serializable {
 		this.userDate = userDate;
 	}
 
+	public String getUserAddress() {
+		return this.userAddress;
+	}
+
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
+	}
+
+	public Integer getUserScore() {
+		return this.userScore;
+	}
+
+	public void setUserScore(Integer userScore) {
+		this.userScore = userScore;
+	}
+	
+	
 }

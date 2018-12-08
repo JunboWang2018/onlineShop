@@ -22,4 +22,16 @@ public interface ICartDAO {
 	 */
 	public String addProdToCart(String userId, String prodId, String prodNum);
 	
+	/**
+	 * delete product by id
+	 * @param searchKey
+	 * @return
+	 */
+	public String deleteProd(String searchKey);
+	
+	/**
+	 *  delete all product in cart
+	 * @return
+	 */
+	public String deleteProdAll();
 }

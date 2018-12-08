@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 
 import com.onlineshop.service.ICartService;
+import com.onlineshop.utils.Const;
 import com.onlineshop.vo.TbCart;
 import com.onlineshop.vo.TbUser;
 import com.opensymphony.xwork2.ActionContext;
@@ -27,7 +28,7 @@ public class CartAction extends ActionSupport {
 		String userId = user.getUserId().toString();
 		System.out.println("CartAction prodId=" + prodId + ",prodNum=" + prodNum + ",userId=" + userId);
 		String result = cartService.addProdToCart(userId, prodId, prodNum);
-		if(result.equals("success")) {
+		if(result.equals(Const.SUCCESS)) {
 			return SUCCESS;
 		}
 		else {
@@ -47,6 +48,24 @@ public class CartAction extends ActionSupport {
 		session.put("cartList", cartList);
 		return SUCCESS;
 	}
+	
+	/**
+	 * delete product
+	 */
+	public String deleteProd() {
+		//获得request对象
+		HttpServletRequest request = (HttpServletRequest)ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
+		String deleteKey = (String) request.getParameter("deleteKey");
+		System.out.println("deleteKey = " + deleteKey);
+		String result = cartService.deleteProd(deleteKey);
+		if(result.equals(Const.SUCCESS)) {
+			return SUCCESS;
+		}
+		else {
+			return ERROR;
+		}
+	}
+	
 	public ICartService getCartService() {
 		return cartService;
 	}
@@ -54,5 +73,5 @@ public class CartAction extends ActionSupport {
 		this.cartService = cartService;
 	}
 	
-	
+	 
 }

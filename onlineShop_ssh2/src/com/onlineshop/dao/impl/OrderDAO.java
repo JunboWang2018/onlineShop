@@ -25,7 +25,7 @@ public class OrderDAO extends BaseDAO implements IOrderDAO {
 	    query.setParameter(0, Integer.valueOf(userId));
 	    List<TbOrder> orderList = query.list();
 	    session.close();
-	    if(orderList.size() > 0) {
+	    if(!orderList.isEmpty()) {
 	    	return orderList;
 	    }
 		return null;
@@ -39,7 +39,7 @@ public class OrderDAO extends BaseDAO implements IOrderDAO {
 	    Query query = session.createQuery(sql);
 	    query.setParameter(0, Integer.valueOf(userId));
 	    List<TbCart> cartList = query.list();
-	    if(cartList == null) {
+	    if(cartList.isEmpty()) {
 	    	System.out.println("cart is empty, add to order fiald");
 	    	return "error";
 	    }

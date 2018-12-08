@@ -22,7 +22,7 @@ public class UserDAO extends BaseDAO implements IUserDAO {
 		query.setParameter(0, username);
 		query.setParameter(1, password);
 		List tbusers = query.list();
-		if(tbusers.size() != 0) {
+		if(!tbusers.isEmpty()) {
 			TbUser tbuser = (TbUser)tbusers.get(0);
 			return tbuser;
 		}

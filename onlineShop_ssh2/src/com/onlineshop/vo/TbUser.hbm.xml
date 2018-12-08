@@ -28,5 +28,11 @@
         <property name="userDate" type="java.util.Date">
             <column name="user_date" length="10" />
         </property>
+        <property name="userAddress" type="java.lang.String">
+            <column name="user_address" length="1000" />
+        </property>
+        <property name="userScore" type="java.lang.Integer">
+            <column name="user_score" not-null="true"/>
+        </property>
     </class>
 </hibernate-mapping>

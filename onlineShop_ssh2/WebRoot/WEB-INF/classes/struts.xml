@@ -24,12 +24,18 @@
 		<action name="searchCartProd" class="cartAction" method="searchCartProd">
 			<result name="success">/user/cart.jsp</result>
 		</action>
+		<action name="deleteCartProd" class="cartAction" method="deleteProd">
+
+		</action>
 		<action name="addOrderAction" class="orderAction" method="addOrder">
 			<result name="success">/user/addOrder_success.jsp</result>
 			<result name="error">/user/addOrder_error.jsp</result>
 		</action>
 		<action name="searchOrderProd" class="orderAction" method="searchOrderProd">
 			<result name="success">/user/order_list.jsp</result>
+		</action>
+		<action name="deleteOrderProd" class="orderAction" method="deleteProd">
+
 		</action>
 		<action name="searchProdByDefaultKey_mobile" class="userProdAction" method="searchProdByDefaultKey_mobile">
 			<result name="success">/product/product_list.jsp</result>
