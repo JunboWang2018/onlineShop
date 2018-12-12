@@ -22,6 +22,7 @@
 				<li>${user.userName }</li>
 				<li><a href="logout.action">退出</a></li>
 			</c:if>
+			<li><a href="searchInfo.action">信息管理</a></li>
 			<li><a href="searchCartProd.action">购物车</a></li>
 			<li><a href="searchOrderProd.action">我的订单</a></li>
 		</ol>

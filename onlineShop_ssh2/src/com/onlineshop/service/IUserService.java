@@ -19,6 +19,6 @@ public interface IUserService {
 	
 	public TbUser userInfoManage(TbUser tbUser);
 	
-	public String userPasswordModify(String originPWD, String newPWD);
+	public String userPasswordModify(String userId, String originPWD, String newPWD);
 
 }

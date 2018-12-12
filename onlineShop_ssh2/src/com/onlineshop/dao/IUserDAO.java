@@ -19,5 +19,5 @@ public interface IUserDAO {
 
 	public TbUser userInfoManage(TbUser tbUser);
 	
-	public String userPasswordModify(String newPWD);
+	public String userPasswordModify(String userId, String newPWD);
 }

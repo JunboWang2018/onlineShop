@@ -2,8 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="com.onlineshop.vo.TbUser" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+	<!-- 判断是否已登录 -->
 <%
 	TbUser user = (TbUser)session.getAttribute("user");
+	if (user == null){
+		response.sendRedirect("../user/login.jsp");
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -52,21 +56,21 @@ font {
 						<label for="username" class="col-sm-2 control-label">用户名</label>
 						<div class="col-sm-6">
 								<input name="tbUser.userName" type="text" class="form-control" id="username" 
-							placeholder="<%=user.getUserName() %>">
+							value="<%=user.getUserName() %>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
 						<div class="col-sm-6">
 							<input name="tbUser.userMail" type="email" class="form-control" id="inputEmail3"
-								placeholder="<%=user.getUserMail() %>">
+								value="<%=user.getUserMail() %>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="usercaption" class="col-sm-2 control-label">姓名</label>
 						<div class="col-sm-6">
 							<input name="tbUser.userRealname" type="text" class="form-control" id="usercaption"
-								placeholder="<%=user.getUserName() %>">
+								value="<%=user.getUserRealname() %>">
 						</div>
 					</div>
 					<div class="form-group opt">
@@ -114,7 +118,7 @@ font {
 								<label for="userAddress" class="col-sm-2 control-label">收获地址 <%=i+1 %></label>
 								<div class="col-sm-6">
 									<input name="address<%=i %>" type="text" class="form-control" id="usercaption"
-										placeholder="<%=userAddress[i] %>">
+										value="<%=userAddress[i] %>">
 								</div>
 							</div>						
 					<%

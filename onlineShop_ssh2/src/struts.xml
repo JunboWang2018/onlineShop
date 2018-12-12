@@ -15,10 +15,13 @@
 			<result name="success">/user/logout_success.jsp</result>
 		</action>
 		<action name="infoManage" class="userAction" method="userInfoManage">
-
+			<result name="success">/user/userInfoManage.jsp</result>
+		</action>
+		<action name="searchInfo" class="userAction" method="searchInfo">
+			<result name="success">/user/userInfoManage.jsp</result>
 		</action>
 		<action name="pwdModify" class="userAction" method="userPasswordModify">
-
+			<result name="success">/user/userInfoManage.jsp</result>
 		</action>
 		<action name="searchAction" class="userProdAction" method="searchProdByKey">
 			<result name="success">/product/product_list.jsp</result>
@@ -31,7 +34,8 @@
 			<result name="success">/user/cart.jsp</result>
 		</action>
 		<action name="deleteCartProd" class="cartAction" method="deleteProd">
-
+			<result name="success">/user/cart.jsp</result>
+			<result name="error">/user/cart.jsp</result>
 		</action>
 		<action name="addOrderAction" class="orderAction" method="addOrder">
 			<result name="success">/user/addOrder_success.jsp</result>

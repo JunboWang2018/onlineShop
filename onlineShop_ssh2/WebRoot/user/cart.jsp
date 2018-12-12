@@ -106,6 +106,7 @@
 			</em> 赠送积分: <em style="color:#ff6600;"><%=user.getUserScore() %></em>&nbsp; 商品金额: <strong style="color:#ff6600;">￥<%=sumPrice %>元</strong>
 				</div>
 				<div style="text-align:right;margin-top:10px;margin-bottom:10px;">
+					<a href="searchCartProd.action" id="refresh" class="clear">刷新</a>
 					<a href="deleteCartProd.action?deleteKey=ALL" id="clear" class="clear">清空购物车</a>
 					<a href="addOrderAction.action">
 						<input type="submit" width="100" value="提交订单" name="submit" border="0" style="background: url('../image/basic/register.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0);

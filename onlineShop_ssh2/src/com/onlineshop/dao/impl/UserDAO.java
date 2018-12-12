@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import com.onlineshop.dao.BaseDAO;
 import com.onlineshop.dao.IUserDAO;
+import com.onlineshop.utils.Const;
 import com.onlineshop.vo.TbUser;
 
 public class UserDAO extends BaseDAO implements IUserDAO {
@@ -51,14 +52,45 @@ public class UserDAO extends BaseDAO implements IUserDAO {
 
 	@Override
 	public TbUser userInfoManage(TbUser tbUser) {
-		
+		Session session = this.getSession();
+		Transaction tsc = session.beginTransaction();
+		String updateHql = "update TbUser u set u.userName=?,u.userMail=?,u.userRealname=?," + 
+						"u.userSex=?,u.userDate=?,u.userAddress=? where u.userId=?";
+		Query query = session.createQuery(updateHql);
+		query.setParameter(0, tbUser.getUserName());
+		query.setParameter(1, tbUser.getUserMail());
+		query.setParameter(2, tbUser.getUserRealname());
+		query.setParameter(3, tbUser.getUserSex());
+		query.setParameter(4, tbUser.getUserDate());
+		query.setParameter(5, tbUser.getUserAddress());
+		query.setParameter(6, tbUser.getUserId());
+		int result = query.executeUpdate();
+		System.out.println("result = " + result);
+		tsc.commit();
+		if(result == 1) {
+			return tbUser;
+		}
 		return null;
 	}
-
+	
+	/**
+	 * change password
+	 */
 	@Override
-	public String userPasswordModify(String newPWD) {
-		
-		return null;
+	public String userPasswordModify(String userId, String newPWD) {
+		Session session = this.getSession();
+		Transaction tsc = session.beginTransaction();
+		String updateHql = "update TbUser u set u.userPassword=? where u.userId=?";
+		Query query = session.createQuery(updateHql);
+		query.setParameter(0, newPWD);
+		query.setParameter(1, Integer.parseInt(userId));
+		int result = query.executeUpdate();
+		System.out.println("result = " + result);
+		tsc.commit();
+		if(result == 1) {
+			return Const.SUCCESS;
+		}
+		return Const.ERROR;
 	}
 
 }

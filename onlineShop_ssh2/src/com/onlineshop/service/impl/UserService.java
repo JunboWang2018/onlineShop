@@ -34,7 +34,7 @@ public class UserService implements IUserService{
 	}
 	
 	@Override
-	public String userPasswordModify(String originPWD, String newPWD) {
+	public String userPasswordModify(String userId, String originPWD, String newPWD) {
 		if(newPWD == null || newPWD.equals("")) {
 			System.out.println("newPWD is null");
 			return Const.ERROR;
@@ -46,7 +46,7 @@ public class UserService implements IUserService{
 			return Const.ERROR;
 		}
 		else {
-			return userDAO.userPasswordModify(newPWD);
+			return userDAO.userPasswordModify(userId, newPWD);
 		}
 	}	
 
